@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lumora | Heat pumps and ventilation, calculated first</title>
+<meta name="description" content="Lumora installs heat pumps and balanced ventilation in homes and small businesses. Every building is calculated first; only then do you get a quote. A fictional company, made for a Nolorem demo.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<style>
+  :root { --ink:#1F3A4D; --steel:#6A8CA3; --mist:#D9E4EA; --amber:#E8A33D; --paper:#F7F9FA; --text:#22313B; --muted:#5C6B75; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:"Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif; color:var(--text); background:var(--paper); line-height:1.6; }
+  a { color:var(--ink); }
+  .wrap { max-width:1240px; margin:0 auto; padding:0 40px; }
+
+  header { background:#fff; border-bottom:1px solid #e3eaee; }
+  header .wrap { display:flex; align-items:center; justify-content:space-between; height:84px; }
+  .brand { display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--ink); font-size:28px; font-weight:700; letter-spacing:-.02em; }
+  .brand svg { width:40px; height:40px; }
+  nav ul { display:flex; gap:32px; list-style:none; font-size:16px; }
+  nav a { text-decoration:none; color:var(--muted); }
+  .btn { display:inline-block; background:var(--amber); color:#1b1b1b; text-decoration:none; font-weight:600; padding:12px 22px; border-radius:10px; }
+
+  .hero { background:linear-gradient(180deg, #fff 0%, var(--paper) 100%); }
+  .hero .wrap { display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:center; padding-top:72px; padding-bottom:80px; }
+  .eyebrow { font-size:15px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--steel); }
+  h1 { font-size:58px; line-height:1.08; letter-spacing:-.03em; color:var(--ink); margin:18px 0 24px; }
+  .lead { font-size:20px; color:var(--text); max-width:620px; }
+  .hero .actions { margin-top:34px; display:flex; gap:18px; align-items:center; }
+  .hero .actions .link { font-weight:600; text-decoration:none; }
+  .art { background:var(--mist); border-radius:28px; aspect-ratio:1 / .9; display:flex; align-items:center; justify-content:center; }
+  .art svg { width:78%; height:auto; }
+
+  section { padding:84px 0; }
+  h2 { font-size:38px; line-height:1.15; letter-spacing:-.02em; color:var(--ink); margin-bottom:18px; }
+  .intro { font-size:18px; color:var(--muted); max-width:760px; margin-bottom:44px; }
+  .cards { display:grid; grid-template-columns:repeat(3, 1fr); gap:28px; }
+  .card { background:#fff; border:1px solid #e3eaee; border-radius:18px; padding:30px; }
+  .card h3 { font-size:22px; color:var(--ink); margin-bottom:10px; }
+  .card p { color:var(--muted); }
+  .card .tag { display:inline-block; font-size:13px; font-weight:600; color:var(--ink); background:var(--mist); border-radius:99px; padding:3px 12px; margin-bottom:14px; }
+
+  .steps { counter-reset:step; display:grid; grid-template-columns:repeat(4, 1fr); gap:24px; list-style:none; }
+  .steps li { background:#fff; border-radius:18px; padding:28px; border-top:4px solid var(--amber); }
+  .steps li::before { counter-increment:step; content:counter(step); display:block; font-size:30px; font-weight:700; color:var(--steel); margin-bottom:8px; }
+  .steps h3 { font-size:19px; color:var(--ink); margin-bottom:6px; }
+  .steps p { color:var(--muted); font-size:16px; }
+
+  .band { background:var(--ink); color:#eef3f6; }
+  .band h2 { color:#fff; }
+  .band .intro { color:#c3d2db; }
+  .who { display:grid; grid-template-columns:repeat(3, 1fr); gap:28px; }
+  .who div { border-left:3px solid var(--amber); padding-left:22px; }
+  .who h3 { font-size:21px; color:#fff; margin-bottom:8px; }
+  .who p { color:#c3d2db; }
+
+  .faq { max-width:860px; }
+  .faq details { background:#fff; border:1px solid #e3eaee; border-radius:14px; padding:20px 24px; margin-bottom:14px; }
+  .faq summary { font-weight:600; font-size:18px; color:var(--ink); cursor:pointer; }
+  .faq details p { margin-top:12px; color:var(--muted); }
+
+  .contact { background:#fff; }
+  .contact .wrap { display:flex; justify-content:space-between; align-items:center; gap:40px; }
+
+  footer { background:#13242f; color:#b5c4cd; font-size:15px; padding:44px 0; }
+  footer .wrap { display:flex; flex-direction:column; gap:14px; }
+  footer strong { color:#fff; }
+  .fiction { border:1px solid #3a5566; border-radius:12px; padding:16px 20px; color:#e3ecf1; }
+  footer a { color:#fff; }
+
+  @media (max-width: 900px) {
+    .wrap { padding:0 20px; }
+    nav ul { display:none; }
+    .hero .wrap, .cards, .steps, .who { grid-template-columns:1fr; }
+    h1 { font-size:40px; }
+    .contact .wrap { flex-direction:column; align-items:flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Lumora home">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#1F3A4D"/><path d="M11 25.5c3.2-6.4 14.8-6.4 18 0" stroke="#E8A33D" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M14.5 19.5c2.2-3.6 8.8-3.6 11 0" stroke="#6A8CA3" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="20" cy="29" r="2.6" fill="#E8A33D"/></svg>
+      Lumora
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#heat-pumps">Heat pumps</a></li>
+        <li><a href="#ventilation">Ventilation</a></li>
+        <li><a href="#how">How we work</a></li>
+        <li><a href="#faq">Questions</a></li>
+      </ul>
+    </nav>
+    <a class="btn" href="#contact">Book a home check</a>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Heat pumps and ventilation</div>
+      <h1>Warm homes without gas, calculated before we quote.</h1>
+      <p class="lead">Lumora installs heat pumps and balanced ventilation in homes and small businesses around Mechelen. We calculate every building first: its insulation, its heat loss and its airflow. Only then do you get a quote.</p>
+      <div class="actions"><a class="btn" href="#contact">Book a home check</a><a class="link" href="#how">How we work &rarr;</a></div>
+    </div>
+    <div class="art" aria-hidden="true">
+      <svg viewBox="0 0 320 280"><path d="M40 140 160 50l120 90" fill="none" stroke="#1F3A4D" stroke-width="10" stroke-linejoin="round" stroke-linecap="round"/><rect x="70" y="130" width="180" height="120" rx="8" fill="#fff" stroke="#1F3A4D" stroke-width="8"/><rect x="140" y="180" width="40" height="70" rx="4" fill="#6A8CA3"/><rect x="92" y="156" width="34" height="30" rx="4" fill="#D9E4EA" stroke="#1F3A4D" stroke-width="4"/><rect x="194" y="156" width="34" height="30" rx="4" fill="#D9E4EA" stroke="#1F3A4D" stroke-width="4"/><rect x="262" y="196" width="46" height="54" rx="6" fill="#E8A33D"/><circle cx="285" cy="223" r="14" fill="none" stroke="#1F3A4D" stroke-width="4"/><path d="M110 112c10-14 30-14 40 0M170 112c10-14 30-14 40 0" stroke="#E8A33D" stroke-width="6" fill="none" stroke-linecap="round"/></svg>
+    </div>
+  </div>
+</div>
+
+<section id="heat-pumps">
+  <div class="wrap">
+    <h2>Heat pumps that suit the house you have</h2>
+    <p class="intro">An older house and a heat pump can work well together, as long as you know where the heat goes. We start with the building, not with a catalogue.</p>
+    <div class="cards">
+      <div class="card"><span class="tag">Homes</span><h3>Air to water heat pumps</h3><p>For houses that want to leave the gas boiler behind. We check the roof, the walls and the radiators first, and tell you honestly what to do before the pump.</p></div>
+      <div class="card" id="ventilation"><span class="tag">Homes and offices</span><h3>Balanced ventilation (system D)</h3><p>Fresh air in every room and the heat of the outgoing air kept inside. We plan the ducts with the rest of the renovation, so nothing has to be broken open twice.</p></div>
+      <div class="card"><span class="tag">Businesses</span><h3>Small business buildings</h3><p>For companies with a building of their own: the whole building calculated, one plan for heating, cooling and air, and one point of contact.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="how" style="background:#eef3f6">
+  <div class="wrap">
+    <h2>How we work</h2>
+    <p class="intro">Four steps, always in this order. The calculation comes before the price, because a heat pump that is too big or too small costs you for years.</p>
+    <ol class="steps">
+      <li><h3>Home visit</h3><p>We walk through the building with you and note what is there today.</p></li>
+      <li><h3>Calculation</h3><p>Heat loss per room, airflow and the power the building really needs.</p></li>
+      <li><h3>Quote</h3><p>One clear proposal, with what we advise and why.</p></li>
+      <li><h3>Installation</h3><p>Our own team installs it, sets it up and comes back to check it after the first winter.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Who we work for</h2>
+    <p class="intro">Most of our work comes from three kinds of clients.</p>
+    <div class="who">
+      <div><h3>Owners of an older home</h3><p>They want to leave gas behind, but are not sure a heat pump works without insulating everything first.</p></div>
+      <div><h3>Contractors and architects</h3><p>They need an installer who keeps to the schedule and delivers the paperwork for the energy performance file.</p></div>
+      <div><h3>Small businesses with their own building</h3><p>They want a lower energy bill and someone who looks at the whole building, not one machine.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <h2>Questions we hear every week</h2>
+    <div class="faq">
+      <details><summary>Does a heat pump work in a house from the seventies?</summary><p>Often it does, when the roof is insulated first and the radiators can deliver enough heat at a lower water temperature. The calculation tells you which of the two needs work.</p></details>
+      <details><summary>Do I need system D ventilation with a heat pump?</summary><p>Not always. In a house that becomes airtight after a renovation, balanced ventilation keeps the air healthy and keeps the heat inside. We tell you when it makes sense.</p></details>
+      <details><summary>Can you help with the renovation premium?</summary><p>We prepare the technical documents a premium application asks for. The application itself stays in your name.</p></details>
+      <details><summary>How long does an installation take?</summary><p>It depends on the building. You get a planning with the quote, and we keep to it.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div>
+      <h2>Start with a home check</h2>
+      <p class="intro" style="margin-bottom:0">Tell us about your building and we will plan a visit.</p>
+    </div>
+    <a class="btn" href="mailto:hello@lumora.example">hello@lumora.example</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><strong>Lumora</strong> &middot; heat pumps and ventilation</div>
+    <div class="fiction"><strong>Lumora is a fictional company.</strong> It was made for a demo of Nolorem (<a href="https://nolorem.io">nolorem.io</a>) and does not exist. Nothing is offered or sold here, and the contact details are not real.</div>
+  </div>
+</footer>
+
+</body>
+</html>
